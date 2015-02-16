@@ -1,11 +1,19 @@
 \documentclass[pdf]{beamer}
 \mode<presentation>{}
 \usepackage{graphicx}
+%\usepackage{lmodern}
+
+
+%sources:
+
+%http://www.vlab.msi.umn.edu/people/download/InternshipSummer2007/handler%20pres.pdf
+%http://qubit-ulm.com/wp-content/uploads/2012/04/Lanczos_Algebra.pdf
+%http://www.ams.org/bookstore/pspdf/mbk-76-prev.pdf
 
 \usetheme{Warsaw}
 \usecolortheme{dolphin}
 
-\title{The Lan}
+\title{The Lanczos Algorithm}
 \author{Shane Harding}
 
 \begin{document}
@@ -39,7 +47,45 @@
 
 \end{frame}
 
+\begin{frame}
+\centering
+\frametitle{Brief History}
+The Lanczos algorithm was developed by Cornelius Lanczos. He developed the method while working at Boeing in the 40s. It was then forgotten for a number of years due to the lack of computers meaning that it couldn't be properly utilised. When it was then ``rediscovered" it was modified multiple times to fix some instability issues.
+\end{frame}
 
+
+
+%%%%%%%%%%%%%	THE ALGORITHM	%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{The Algorithm}
+\begin{frame}
+\tableofcontents[currentsection]
+\end{frame}
+
+
+
+\begin{frame}
+The Lanczos Algorithm is used to solve large scale eigenvalue problems. So give a large $n \times n$ matrix $A$ we have:
+\begin{exampleblock}{Eigenvalues and eigenvectors}
+\[
+A v_i = \lambda_i v_i
+\]
+\end{exampleblock}
+Where the vectors $v_i$ are the eigenvectors and the scalars $\lambda_i$ are the eigenvalues.
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%	APPLICATIONS	%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{frame}
+\tableofcontents[currentsection]
+\end{frame}
+
+
+\section{Applications}
 
 \begin{frame}
 \centering
