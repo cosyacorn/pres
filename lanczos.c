@@ -44,4 +44,10 @@ int ** matmul(int **A, int **B, int nrow, int ncol, int ncol2){
 
 int main(){
 
+  int a[10][10];
+
+  a=Mat(10,10);
+
+  
+
 }

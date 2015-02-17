@@ -1,0 +1,16 @@
+\par \begin{verbatim}
+1. set r_0 = b - Ax_0; beta_1 = abs(r_0); v_1 = r_0/beta_1;
+2. for i = 1,...,m do
+     r_i = A v_i - beta_i v_{i-1}
+     alpha_i = (r_i,v_i)
+     r_i = r_i - alpha_i v_i
+     beta_{i+1} = abs(r_i)
+     if(beta_{i+1} < tau)
+        m = i
+        break
+     else
+        v_{i+1} = r_i/beta_{i+1}
+\end{verbatim}
+
+
+

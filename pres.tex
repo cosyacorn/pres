@@ -1,6 +1,8 @@
 \documentclass[pdf]{beamer}
 \mode<presentation>{}
 \usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
 %\usepackage{lmodern}
 
 
@@ -88,6 +90,53 @@ Where the vectors $v_i$ are the eigenvectors and the scalars $\lambda_i$ are the
 \end{itemize}
 \end{frame}
 
+\begin{frame}
+\frametitle{Power Iteration}
+
+The power method can be summarised as follows: If $x_0$ is some random vector and $x_{n+1}=A x_n$ then if we consider the limit of $n$ being large we find that $\frac{x_n}{||x_n||}$ approaches the normed eigenvector with the greatest eigen value. 
+\begin{itemize}
+\item Then if $A=U {diag} (\sigma_i) U'$ is the eigendeecomposition of $A$ then $A^n = U {diag}(\sigma^n_i) U'$.
+\item As n gets big this will be dominated by the largest eigenvalue
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{The Lanczos Algorithm}
+
+We wish to solve the system:
+\[Ax=b\]
+
+where $A \in \mathbb{R}^{N \times N}$ and $b \in \mathbb{R}^N$. Let $x_0 \in \mathbb{R}^N$ be our initial guess at the solution, and $r_0=b-Ax_0$ be the residual of our guess.
+
+We will calculate the tridiagonal, symmetric matrix $T_{mm} = V_m^* A V_m$
+
+Let $v_1=\frac{r_0}{\beta_1}$ where $\beta_1=||r_0||$
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+
+\begin{verbatim}
+1. set r_0 = b - Ax_0; beta_1 = abs(r_0); v_1 = r_0/beta_1;
+2. for i = 1,...,m do
+     r_i = A v_i - beta_i v_{i-1}
+     alpha_i = (r_i,v_i)
+     r_i = r_i - alpha_i v_i
+     beta_{i+1} = abs(r_i)
+     if(beta_{i+1} < tau)
+        m = i
+        break
+     else
+        v_{i+1} = r_i/beta_{i+1}
+\end{verbatim}
+
+
+
+\end{frame}
+
 %%%%%%%%%%%%%%%%%%%	APPLICATIONS	%%%%%%%%%%%%%%%%%%%%
 
 
@@ -97,8 +146,6 @@ Where the vectors $v_i$ are the eigenvectors and the scalars $\lambda_i$ are the
 \tableofcontents[currentsection]
 \end{frame}
 
-
-\section{Applications}
 
 \begin{frame}
 \centering
