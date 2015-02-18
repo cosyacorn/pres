@@ -1,4 +1,4 @@
-This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2013.9.23)  18 FEB 2015 15:17
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2013.9.23)  18 FEB 2015 17:15
 entering extended mode
  %&-line parsing enabled.
 **pres.tex
@@ -696,20 +696,28 @@ File: umsb.fd 2002/01/19 v2.2g AMS font definitions
 ]
 \openout3 = `pres.vrb'.
 
- (./pres.vrb) [13
+ (./pres.vrb)
+Overfull \vbox (3.35751pt too high) detected at line 164
+ []
 
-] (./pres.toc) [14
+[13
+
+] [14
 
 ] [15
 
-] (./pres.toc)
-[16
+] (./pres.toc) [16
 
-] (./pres.toc) [17
+] [17
 
-] [18
+] (./pres.toc) [18
 
-] [19
+] (./pres.toc) [19
+
+]
+[20
+
+] [21
 
 ]
 \tf@nav=\write5
@@ -728,24 +736,24 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 8163 strings out of 256216
- 148036 string characters out of 1917072
+ 8171 strings out of 256216
+ 148106 string characters out of 1917072
  233681 words of memory out of 1500000
- 11141 multiletter control sequences out of 10000+200000
+ 11145 multiletter control sequences out of 10000+200000
  10435 words of font info for 39 fonts, out of 1200000 for 2000
  645 hyphenation exceptions out of 8191
  41i,19n,63p,403b,597s stack positions out of 5000i,500n,6000p,200000b,15000s
-</usr/share/texmf/fonts/type1/bluesky/cm/cmmi10.pfb></usr/share/texmf/fonts/t
-ype1/bluesky/cm/cmmi8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmss10.pfb><
-/usr/share/texmf/fonts/type1/bluesky/cm/cmss12.pfb></usr/share/texmf/fonts/type
-1/bluesky/cm/cmss8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmssi10.pfb></u
-sr/share/texmf/fonts/type1/bluesky/cm/cmssi8.pfb></usr/share/texmf/fonts/type1/
-bluesky/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy8.pfb></usr/
-share/texmf/fonts/type1/bluesky/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/blu
-esky/ams/msbm10.pfb>
-Output written on pres.pdf (19 pages, 193774 bytes).
+</usr/share/texmf/fonts/type1/bluesky/cm/cmex10.pfb></usr/share/texmf/fonts/t
+ype1/bluesky/cm/cmmi10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi8.pfb><
+/usr/share/texmf/fonts/type1/bluesky/cm/cmss10.pfb></usr/share/texmf/fonts/type
+1/bluesky/cm/cmss12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmss8.pfb></us
+r/share/texmf/fonts/type1/bluesky/cm/cmssi10.pfb></usr/share/texmf/fonts/type1/
+bluesky/cm/cmssi8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy10.pfb></usr
+/share/texmf/fonts/type1/bluesky/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/blu
+esky/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/bluesky/ams/msbm10.pfb>
+Output written on pres.pdf (21 pages, 212169 bytes).
 PDF statistics:
- 737 PDF objects out of 1000 (max. 8388607)
- 44 named destinations out of 1000 (max. 131072)
+ 803 PDF objects out of 1000 (max. 8388607)
+ 48 named destinations out of 1000 (max. 131072)
  131 words of extra memory for PDF output out of 10000 (max. 10000000)
 

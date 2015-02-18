@@ -1,4 +1,5 @@
-\par \begin{verbatim}
+\frametitle {The Lanczos Algorithm}
+\begin{verbatim}
 1. v_1 = random vec; v_0 = 0; beta_1 = 0;
 2. for i = 1,...,m -1do
      w_i = A v_i
@@ -12,5 +13,8 @@
    return
 \end{verbatim}
 
+Where $(x,y)$ represents the dot product of $x$ and $y$.
+
+$m$ is chosen by the user. It is the number of eigenvalues that want to be obtained.
 
 

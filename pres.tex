@@ -45,9 +45,9 @@
 \begin{frame}
 \frametitle{Introduction}
 \centering
-The Lanczos Algorithm is a very efficient method of finding `extreme' eigenvalues of symmetric matrices.
+The Lanczos Algorithm is a very efficient method of finding, a few, `extreme' eigenvalues of symmetric matrices, $A$.
 
-By extreme, we mean the eigenvalues with the largest and smallest ablsoute values.
+By extreme, we mean the eigenvalues with the largest and smallest ablsoute values. The algorithm will only find a small number, $m$, of the total number, $n$, of eigenvalues.
 
 \end{frame}
 
@@ -129,20 +129,19 @@ The power method can be summarised as follows: If $x_0$ is some random vector an
 
 \begin{frame}
 \frametitle{The Lanczos Algorithm}
+\begin{itemize}
+\item We wish to find the eigenvalues of the matrix $A$.
 
-We wish to find the eigenvalues of the matrix $A$.
+\item Where $A \in \mathbb{R}^{N \times N}$ and $v_1 \in \mathbb{R}^N$ be a random vector, with norm one.
 
-Where $A \in \mathbb{R}^{N \times N}$.. Let $v_1 \in \mathbb{R}^N$ be a random vector, with norm one.
-
-We will calculate the tridiagonal, symmetric matrix $T_{mm} = V_m^* A V_m$. With the diagonal elements denoted $\alpha_i=t_{ii}$ and the off diagonal elements given by $\beta_i = t+{i-1,i}$. And note that $t_{i-1,i}=t_{i,i-1}$ due to symmetry.
-
-
+\item We will calculate the tridiagonal, symmetric matrix $T_{mm} = V_m^* A V_m$. With the diagonal elements denoted $\alpha_i=t_{ii}$ and the off diagonal elements given by $\beta_i = t+{i-1,i}$. And note that $t_{i-1,i}=t_{i,i-1}$ due to symmetry.
+\end{itemize}
 
 \end{frame}
 
 
 \begin{frame}[fragile]
-
+\frametitle{The Lanczos Algorithm}
 \begin{verbatim}
 1. v_1 = random vec; v_0 = 0; beta_1 = 0;
 2. for i = 1,...,m -1do
@@ -157,6 +156,37 @@ We will calculate the tridiagonal, symmetric matrix $T_{mm} = V_m^* A V_m$. With
    return
 \end{verbatim}
 
+Where $(x,y)$ represents the dot product of $x$ and $y$.
+
+$m$ is chosen by the user. It is the number of eigenvalues that want to be obtained.
+
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{The Lanczos Algorithm}
+
+The previous routine yields the matrix:
+
+\[ T_{mm} = \left( \begin{array}{cccc}
+\alpha_1 & \beta_{2} & & 0\\
+\beta_{2} & \ddots &\ddots & \\
+& \ddots & \ddots & \beta_{m} \\
+0 & & \beta_{m,} & \alpha_m \end{array} \right) \]
+
+The vectors $v_i$ are called the Lanczos vectors. They are then used to construct the transformation matrix $V_m=(v_1,v_2,\dots,v_m)$. This is very useful for computing the eigenvectors.
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{The Lanczos Algorithm}
+
+Once $T_{mm}$ is obtained, its eigenvalues $\lambda^(m)_i$ and their matching eigenvectors $u^(m)_i$ can be calculated. There are a few commonly used methods to do this. Two examples are: multiple relatively robust representations (MRRR); and QR algorithm.
+
+It can be proved that the eigenvalues of $T_{mm}$ are approximate eigenvalues of the original matrix $A$.
 
 
 \end{frame}
