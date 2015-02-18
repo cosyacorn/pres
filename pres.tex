@@ -45,16 +45,41 @@
 \begin{frame}
 \frametitle{Introduction}
 \centering
+The Lanczos Algorithm is a very efficient method of finding `extreme' eigenvalues of symmetric matrices.
 
+By extreme, we mean the eigenvalues with the largest and smallest ablsoute values.
 
 \end{frame}
+
+
+
+\begin{frame}
+\frametitle{What is an Eigenvalue}
+
+If we consider the matrix equation: $A x = b$. Then $x$ is an eigenvector if, and only if, applying $A$ to $x$ yields a scalar multiple of $x$. The factor $x$ is rescaled by is called the eigenvalue and is denoted $\lambda$.
+
+\[ A x = \lambda x \]
+
+\end{frame}
+
+
 
 \begin{frame}
 \centering
 \frametitle{Brief History}
-The Lanczos algorithm was developed by Cornelius Lanczos. He developed the method while working at Boeing in the 40s. It was then forgotten for a number of years due to the lack of computers meaning that it couldn't be properly utilised. When it was then ``rediscovered" it was modified multiple times to fix some instability issues.
+
+The Lanczos algorithm was developed by Cornelius Lanczos. He developed the method while working at the National Bureau of Standards in Washington DC. It was then forgotten for a number of years due to the lack of computers meaning that it couldn't be properly utilised. When it was then ``rediscovered" it was modified multiple times to fix some instability issues.
 \end{frame}
 
+
+
+\begin{frame}
+\centering
+\frametitle{Brief History}
+
+Lanczos later joined the Institute of Numerical Analysis (INA). While working there he entered correspondence with Erwin Schr\"{o}dinger, who was the director of the Dublin Institute of Advanced Studies (DIAS) at the time. Schro\"{o}dinger gave him one year visiting professorship at DIAS. In 1954 Eamon de Valera invited Lanczos to be a senior professor in the School of Theoretical Physics.
+
+\end{frame}
 
 
 %%%%%%%%%%%%%	THE ALGORITHM	%%%%%%%%%%%%%%%%%%%%%
@@ -105,14 +130,13 @@ The power method can be summarised as follows: If $x_0$ is some random vector an
 \begin{frame}
 \frametitle{The Lanczos Algorithm}
 
-We wish to solve the system:
-\[Ax=b\]
+We wish to find the eigenvalues of the matrix $A$.
 
-where $A \in \mathbb{R}^{N \times N}$ and $b \in \mathbb{R}^N$. Let $x_0 \in \mathbb{R}^N$ be our initial guess at the solution, and $r_0=b-Ax_0$ be the residual of our guess.
+Where $A \in \mathbb{R}^{N \times N}$.. Let $v_1 \in \mathbb{R}^N$ be a random vector, with norm one.
 
-We will calculate the tridiagonal, symmetric matrix $T_{mm} = V_m^* A V_m$
+We will calculate the tridiagonal, symmetric matrix $T_{mm} = V_m^* A V_m$. With the diagonal elements denoted $\alpha_i=t_{ii}$ and the off diagonal elements given by $\beta_i = t+{i-1,i}$. And note that $t_{i-1,i}=t_{i,i-1}$ due to symmetry.
 
-Let $v_1=\frac{r_0}{\beta_1}$ where $\beta_1=||r_0||$
+
 
 \end{frame}
 
@@ -120,22 +144,39 @@ Let $v_1=\frac{r_0}{\beta_1}$ where $\beta_1=||r_0||$
 \begin{frame}[fragile]
 
 \begin{verbatim}
-1. set r_0 = b - Ax_0; beta_1 = abs(r_0); v_1 = r_0/beta_1;
-2. for i = 1,...,m do
-     r_i = A v_i - beta_i v_{i-1}
+1. v_1 = random vec; v_0 = 0; beta_1 = 0;
+2. for i = 1,...,m -1do
+     w_i = A v_i
      alpha_i = (r_i,v_i)
-     r_i = r_i - alpha_i v_i
-     beta_{i+1} = abs(r_i)
-     if(beta_{i+1} < tau)
-        m = i
-        break
-     else
-        v_{i+1} = r_i/beta_{i+1}
+     w_i = w_i - alpha_i v_i - beta_i v_{i=1}
+     beta_{i+1} = abs(w_i)
+     v_{i+1} = w_i/beta_{i+1}
+   endfor
+3. w_m = A v_m
+   alpha_m = (w_m,v_m)
+   return
 \end{verbatim}
 
 
 
 \end{frame}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%	PALLEL LANCZOS ALGORITHM	%%%%%%%%%%%%%%%
+
+\section{Parallel Lanczos Algorithm}
+
+\begin{frame}
+\tableofcontents[currentsection]
+\end{frame}
+
+\begin{frame}
+
+
+\end{frame}
+
 
 %%%%%%%%%%%%%%%%%%%	APPLICATIONS	%%%%%%%%%%%%%%%%%%%%
 
@@ -146,6 +187,18 @@ Let $v_1=\frac{r_0}{\beta_1}$ where $\beta_1=||r_0||$
 \tableofcontents[currentsection]
 \end{frame}
 
+%%%%%%%%%%%%%%%		QUESTIONS	%%%%%%%%%
+
+\section{Questions}
+
+\begin{frame}
+\tableofcontents[currentsection]
+\end{frame}
+
+\begin{frame}
+\centering
+Questions?
+\end{frame}
 
 \begin{frame}
 \centering

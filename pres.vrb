@@ -1,15 +1,15 @@
 \par \begin{verbatim}
-1. set r_0 = b - Ax_0; beta_1 = abs(r_0); v_1 = r_0/beta_1;
-2. for i = 1,...,m do
-     r_i = A v_i - beta_i v_{i-1}
+1. v_1 = random vec; v_0 = 0; beta_1 = 0;
+2. for i = 1,...,m -1do
+     w_i = A v_i
      alpha_i = (r_i,v_i)
-     r_i = r_i - alpha_i v_i
-     beta_{i+1} = abs(r_i)
-     if(beta_{i+1} < tau)
-        m = i
-        break
-     else
-        v_{i+1} = r_i/beta_{i+1}
+     w_i = w_i - alpha_i v_i - beta_i v_{i=1}
+     beta_{i+1} = abs(w_i)
+     v_{i+1} = w_i/beta_{i+1}
+   endfor
+3. w_m = A v_m
+   alpha_m = (w_m,v_m)
+   return
 \end{verbatim}
 
 
