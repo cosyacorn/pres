@@ -13,8 +13,6 @@
    return
 \end{verbatim}
 
-Where $(x,y)$ represents the dot product of $x$ and $y$.
-
-$m$ is chosen by the user. It is the number of eigenvalues that want to be obtained.
+Where $(x,y)$ represents the dot product of $x$ and $y$. $m$ is chosen by the user. It is the number of eigenvalues that want to be obtained.
 
 

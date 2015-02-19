@@ -156,9 +156,7 @@ The power method can be summarised as follows: If $x_0$ is some random vector an
    return
 \end{verbatim}
 
-Where $(x,y)$ represents the dot product of $x$ and $y$.
-
-$m$ is chosen by the user. It is the number of eigenvalues that want to be obtained.
+Where $(x,y)$ represents the dot product of $x$ and $y$. $m$ is chosen by the user. It is the number of eigenvalues that want to be obtained.
 
 
 \end{frame}
@@ -183,11 +181,13 @@ The vectors $v_i$ are called the Lanczos vectors. They are then used to construc
 
 \begin{frame}
 \frametitle{The Lanczos Algorithm}
+\begin{itemize}
+\item The vectors $v_i$ in our algorithm should all be orthogonal to each other. Rounding errors however will grow over time so every few iterations a reorthogonalisation process should be run.
+\item Once $T_{mm}$ is obtained, its eigenvalues $\lambda^{(m)}_i$ and their matching eigenvectors $u^{(m)}_i$ can be calculated.
+\item There are a few commonly used methods to do this. Two examples are: multiple relatively robust representations (MRRR); and QR algorithm.
 
-Once $T_{mm}$ is obtained, its eigenvalues $\lambda^{(m)}_i$ and their matching eigenvectors $u^{(m)}_i$ can be calculated. There are a few commonly used methods to do this. Two examples are: multiple relatively robust representations (MRRR); and QR algorithm.
-
-It can be proved that the eigenvalues of $T_{mm}$ are approximate eigenvalues of the original matrix $A$.
-
+\item It can be proved that the eigenvalues of $T_{mm}$ are approximate eigenvalues of the original matrix $A$.
+\end{itemize}
 
 \end{frame}
 
@@ -254,11 +254,34 @@ PageRank works by counting the number and quality of links to a page to determin
 \begin{frame}
 \frametitle{Google PageRank Algorithm}
 \begin{itemize}
-\item Let $B_u$ be the set of all the pages that link to the page $u$.
-\item Let $L(v)$ be the number of unique outgoing links from a page $v$.
-\item Then the general PageRank value can be written as: \[PR(u) = \sum_{v \in B_u} \frac{PR(v)}{L(v)} \]
+\item Let $B_p$ be the set of all the pages that link to the page $p$.
+\item Let $L(q)$ be the number of unique outgoing links from a page $q$.
+\item Then the general PageRank value can be written as: \[PR(p) = \sum_{q \in B_p} \frac{PR(q)}{L(q)} \]
+\item This is then modified to include a `damping' factor: \[ PR(p_1) = \frac{1-d}{N} + d \left( \frac{PR(p_2)}{L(p_2)} + \frac{PR(p_3)}{L(p_3)} + \dots \right) \]
 \end{itemize}
 \end{frame}
+
+
+\begin{frame}
+\frametitle{Where's Lanczos?}
+
+Can write a column vector $R$ as: \[R = \left( \begin{array}{c} PR(p_1) \\ \vdots \\ PR(p_N) \end{array} \right) \]
+
+Then we can write the equation from the last slide as:
+
+\[ R = \left( \begin{array}{c} \frac{1-d}{N} \\ \vdots \\ \frac{1-d}{N} \end{array} \right) +d \left( \begin{array}{cccc}
+l(p_1,p_1) & l(p_1,p_2) & \dots & l(p_1,p_N)\\
+l(p_2,p_1) & \ddots & & \vdots \\
+\vdots & & l(p_i,p_j) & \\
+l(p_N,p_1) & \dots & & l(p_N,p_N)\\
+ \end{array} \right) R \]
+\end{frame}
+
+\begin{frame}
+
+\end{frame}
+
+
 
 %%%%%%%%%%%%%%%		QUESTIONS	%%%%%%%%%
 
