@@ -134,7 +134,7 @@ The power method can be summarised as follows: If $x_0$ is some random vector an
 
 \item Where $A \in \mathbb{R}^{N \times N}$ and $v_1 \in \mathbb{R}^N$ be a random vector, with norm one.
 
-\item We will calculate the tridiagonal, symmetric matrix $T_{mm} = V_m^* A V_m$. With the diagonal elements denoted $\alpha_i=t_{ii}$ and the off diagonal elements given by $\beta_i = t+{i-1,i}$. And note that $t_{i-1,i}=t_{i,i-1}$ due to symmetry.
+\item We will calculate the tridiagonal, symmetric matrix $T_{mm} = V_m^* A V_m$. With the diagonal elements denoted $\alpha_i=t_{ii}$ and the off diagonal elements given by $\beta_i = t_{i-1,i}$. And note that $t_{i-1,i}=t_{i,i-1}$ due to symmetry.
 \end{itemize}
 
 \end{frame}
@@ -184,7 +184,7 @@ The vectors $v_i$ are called the Lanczos vectors. They are then used to construc
 \begin{frame}
 \frametitle{The Lanczos Algorithm}
 
-Once $T_{mm}$ is obtained, its eigenvalues $\lambda^(m)_i$ and their matching eigenvectors $u^(m)_i$ can be calculated. There are a few commonly used methods to do this. Two examples are: multiple relatively robust representations (MRRR); and QR algorithm.
+Once $T_{mm}$ is obtained, its eigenvalues $\lambda^{(m)}_i$ and their matching eigenvectors $u^{(m)}_i$ can be calculated. There are a few commonly used methods to do this. Two examples are: multiple relatively robust representations (MRRR); and QR algorithm.
 
 It can be proved that the eigenvalues of $T_{mm}$ are approximate eigenvalues of the original matrix $A$.
 
@@ -215,6 +215,49 @@ It can be proved that the eigenvalues of $T_{mm}$ are approximate eigenvalues of
 
 \begin{frame}
 \tableofcontents[currentsection]
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Applications}
+There are many many applications of the Lanczos method. It is a popular method in Condensed Matter Physics where the Hamiltonians of electron systems need to be solved. It is also in solving non-linear inverse problems, which is very useful in modeling oil and gas reservoirs.
+
+Eigenvectors are important in large scale ranking methods. Google's PageRank algorithm is good example of this. 
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Google PageRank Algorithm}
+
+When you make a Google search, Google uses an algorithm, called PageRank, to rank the results of your search. This is what Google says the PageRank algorithm is:
+
+\begin{exampleblock}{PageRank}
+PageRank works by counting the number and quality of links to a page to determine a rough estimate of how important the website is. The underlying assumption is that more important websites are likely to receive more links from other websites 
+\end{exampleblock}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Google PageRank Algorithm}
+\begin{itemize}
+\item PageRank gives a probability distribution that represents the likelihood that if you randomly click on links you will arrive on a given page. 
+\item Each page, $u$ is given a value, $PR(u)$, between zero and one; and the sum over all the $PR$'s must be one.
+\item The initial value of $PR(u)$ is simply one divided by the number of pages for each page $u$. So if there are 12 pages, each $PR(u_i)$ is $\frac{1}{12}$.
+\end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Google PageRank Algorithm}
+\begin{itemize}
+\item Let $B_u$ be the set of all the pages that link to the page $u$.
+\item Let $L(v)$ be the number of unique outgoing links from a page $v$.
+\item Then the general PageRank value can be written as: \[PR(u) = \sum_{v \in B_u} \frac{PR(v)}{L(v)} \]
+\end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%		QUESTIONS	%%%%%%%%%

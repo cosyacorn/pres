@@ -1,4 +1,4 @@
-This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2013.9.23)  18 FEB 2015 17:15
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2013.9.23)  19 FEB 2015 12:32
 entering extended mode
  %&-line parsing enabled.
 **pres.tex
@@ -665,27 +665,27 @@ LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <4> not available
 ]
 (./pres.toc) [3
 
-] [4
-
 ]
-LaTeX Font Info:    Try loading font information for U+msa on input line 63.
+LaTeX Font Info:    Try loading font information for U+msa on input line 52.
  (/usr/share/texmf/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2002/01/19 v2.2g AMS font definitions
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 63.
+LaTeX Font Info:    Try loading font information for U+msb on input line 52.
 
 (/usr/share/texmf/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2002/01/19 v2.2g AMS font definitions
-) [5
+) [4
+
+] [5
 
 ] [6
 
 ] [7
 
-] (./pres.toc) [8
+] (./pres.toc)
+[8
 
-]
-[9
+] [9
 
 ] [10
 
@@ -712,12 +712,20 @@ Overfull \vbox (3.35751pt too high) detected at line 164
 
 ] (./pres.toc) [18
 
-] (./pres.toc) [19
+] [19
 
-]
-[20
+] [20
 
 ] [21
+
+] [22
+
+]
+(./pres.toc) [23
+
+] [24
+
+] [25
 
 ]
 \tf@nav=\write5
@@ -736,10 +744,10 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 8171 strings out of 256216
- 148106 string characters out of 1917072
+ 8187 strings out of 256216
+ 148246 string characters out of 1917072
  233681 words of memory out of 1500000
- 11145 multiletter control sequences out of 10000+200000
+ 11153 multiletter control sequences out of 10000+200000
  10435 words of font info for 39 fonts, out of 1200000 for 2000
  645 hyphenation exceptions out of 8191
  41i,19n,63p,403b,597s stack positions out of 5000i,500n,6000p,200000b,15000s
@@ -751,9 +759,9 @@ r/share/texmf/fonts/type1/bluesky/cm/cmssi10.pfb></usr/share/texmf/fonts/type1/
 bluesky/cm/cmssi8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy10.pfb></usr
 /share/texmf/fonts/type1/bluesky/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/blu
 esky/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/bluesky/ams/msbm10.pfb>
-Output written on pres.pdf (21 pages, 212169 bytes).
+Output written on pres.pdf (25 pages, 242332 bytes).
 PDF statistics:
- 803 PDF objects out of 1000 (max. 8388607)
- 48 named destinations out of 1000 (max. 131072)
+ 930 PDF objects out of 1000 (max. 8388607)
+ 56 named destinations out of 1000 (max. 131072)
  131 words of extra memory for PDF output out of 10000 (max. 10000000)
 
