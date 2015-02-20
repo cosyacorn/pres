@@ -11,11 +11,12 @@
 %http://www.vlab.msi.umn.edu/people/download/InternshipSummer2007/handler%20pres.pdf
 %http://qubit-ulm.com/wp-content/uploads/2012/04/Lanczos_Algebra.pdf
 %http://www.ams.org/bookstore/pspdf/mbk-76-prev.pdf
+%http://eprint.iacr.org/2011/416.pdf
 
 \usetheme{Warsaw}
 \usecolortheme{dolphin}
 
-\title{The Lanczos Algorithm}
+\title{Power Iterations and The Lanczos Algorithm}
 \author{Shane Harding}
 
 \begin{document}
@@ -45,6 +46,8 @@
 \begin{frame}
 \frametitle{Introduction}
 \centering
+A power iteration is an eigenvalue algorithm. For a square matrix $A$, the power iteration will return an eigenvalue $\lambda$ and its corresponding eigenvector $v$.
+
 The Lanczos Algorithm is a very efficient method of finding, a few, `extreme' eigenvalues of symmetric matrices, $A$.
 
 By extreme, we mean the eigenvalues with the largest and smallest ablsoute values. The algorithm will only find a small number, $m$, of the total number, $n$, of eigenvalues.
@@ -118,7 +121,7 @@ Where the vectors $v_i$ are the eigenvectors and the scalars $\lambda_i$ are the
 \begin{frame}
 \frametitle{Power Iteration}
 
-The power method can be summarised as follows: If $x_0$ is some random vector and $x_{n+1}=A x_n$ then if we consider the limit of $n$ being large we find that $\frac{x_n}{||x_n||}$ approaches the normed eigenvector with the greatest eigen value. 
+The power method can be described as: If $x_0$ is some random vector and $x_{n+1}=A x_n$ then if we consider the limit of $n$ being large we find that $\frac{x_n}{||x_n||}$ approaches the normed eigenvector with the greatest eigen value. 
 \begin{itemize}
 \item Then if $A=U {diag} (\sigma_i) U'$ is the eigendeecomposition of $A$ then $A^n = U {diag}(\sigma^n_i) U'$.
 \item As n gets big this will be dominated by the largest eigenvalue
@@ -203,8 +206,57 @@ The vectors $v_i$ are called the Lanczos vectors. They are then used to construc
 \end{frame}
 
 \begin{frame}
+\frametitle{Parallelising The Lanczos Algorithm}
+\begin{itemize}
+\item There are a few different ways of parallelising the Lanczos Algorithm.
+\item They involve various ways to partition the matrix and distribute the calculations.
+\item Essentially it involves parallelising the matrix-vector product.
+\end{itemize}
+\end{frame}
 
 
+\begin{frame}
+\frametitle{Per element matrix distribution}
+\begin{itemize}
+\item Each processor is given a subset of, nonzero, elements of the matrix.
+\item The distribution is balanced such that each processor gets the same number of elements.
+\item The actual algorithm is preformed by the master process, while the matrix-vector operation is distributed.
+\item The slave processors complete the following:
+\begin{itemize}
+\item Master decides which parts of the vector each slave needs.
+\item Each slave computes its part of the matrix-vector product and sends its data back
+\item The master recieves the data and does its thing for the final result.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Per column matrix distribution}
+\begin{itemize}
+\item Divide the columns of the matrix evenly between the processors. Ideally it should be preprocessed so that each processor has same amount of nonzero elements.
+\item All the computations for the algorithm are done by all the processors. Each processor has $1/NP$ of the vector.
+\item The matrix-vector product is preformed in the stages:
+\begin{itemize}
+\item Each processor computes its part of the matrix-vector product
+\item These parts are then combined.
+\end{itemize}
+\item Assuming that we perfectly balance the load, we should get a scaling factor of $PN^{-1}$.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Per submatrix matrix distribution}
+\begin{itemize}
+\item This requires a mesh architecture on the cluster.
+\item Split the matrix into P submatrices, of roughly the same size, and distribute them between the processors.
+\begin{itemize}
+\item Each proc computes the matrix vector product with its submatrix and the relevant part of the vector
+\item These results are then combined
+\end{itemize}
+\item This method has a scale factor of $PN^{-1/2}$.
+\end{itemize}
 \end{frame}
 
 
@@ -220,7 +272,7 @@ The vectors $v_i$ are called the Lanczos vectors. They are then used to construc
 
 \begin{frame}
 \frametitle{Applications}
-There are many many applications of the Lanczos method. It is a popular method in Condensed Matter Physics where the Hamiltonians of electron systems need to be solved. It is also in solving non-linear inverse problems, which is very useful in modeling oil and gas reservoirs.
+There are many many applications of power iterations and the Lanczos method. They are popular methods in Condensed Matter Physics where the Hamiltonians of electron systems need to be solved. It is also in solving non-linear inverse problems, which is very useful in modeling oil and gas reservoirs.
 
 Eigenvectors are important in large scale ranking methods. Google's PageRank algorithm is good example of this. 
 \end{frame}
@@ -232,7 +284,7 @@ Eigenvectors are important in large scale ranking methods. Google's PageRank alg
 When you make a Google search, Google uses an algorithm, called PageRank, to rank the results of your search. This is what Google says the PageRank algorithm is:
 
 \begin{exampleblock}{PageRank}
-PageRank works by counting the number and quality of links to a page to determine a rough estimate of how important the website is. The underlying assumption is that more important websites are likely to receive more links from other websites 
+PageRank works by counting the number and quality of links to a page to determine a rough estimate of how important the website is. The underlying assumption is that more important websites are likely to receive more links from other websites. 
 \end{exampleblock}
 
 \end{frame}
@@ -276,6 +328,8 @@ l(p_2,p_1) & \ddots & & \vdots \\
 l(p_N,p_1) & \dots & & l(p_N,p_N)\\
  \end{array} \right) R \]
 \end{frame}
+
+
 
 \begin{frame}
 
